@@ -14,31 +14,13 @@ env:
     # with Travis CI's newer container infrastructure.
     - RACKET_DIR=~/racket
   matrix:
-    # Supply at least one RACKET_VERSION environment variable. This is
-    # used by the install-racket.sh script (run at before_install,
-    # below) to select the version of Racket to download and install.
-    #
-    # Supply more than one RACKET_VERSION (as in the example below) to
-    # create a Travis-CI build matrix to test against multiple Racket
-    # versions.
-    - RACKET_VERSION=5.3.4
-    - RACKET_VERSION=5.3.5
-    - RACKET_VERSION=5.92
-    - RACKET_VERSION=6.0
-    - RACKET_VERSION=6.1
-    - RACKET_VERSION=6.1.1
+    - RACKET_VERSION=5.3.
     - RACKET_VERSION=HEAD
 
-# You may want to test against certain versions of Racket, without
-# having them count against the overall success/failure.
 matrix:
   allow_failures:
     - env: RACKET_VERSION=HEAD
-  # Fast finish: Overall build result is determined as soon as any of
-  # its rows have failed, or, all of its rows that aren't allowed to
-  # fail have succeeded.
   fast_finish: true
-
 
 before_install:
   - git clone https://github.com/greghendershott/travis-racket.git
@@ -54,7 +36,7 @@ before_script:
 # Tip: Use `raco pkg install --deps search-auto <pkg>` to install any
 # required packages without getting stuck on a confirmation prompt.
 script:
-  - raco make main.rkt
+  - raco make "Chapter One/Exercise-1.rkt"
   - raco test -x .
 
 # NOTE: If your repo is a Racket package with an info.rkt that
