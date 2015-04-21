@@ -14,7 +14,7 @@ env:
     # with Travis CI's newer container infrastructure.
     - RACKET_DIR=~/racket
   matrix:
-    - RACKET_VERSION=5.3.
+    - RACKET_VERSION=5.3.6
     - RACKET_VERSION=HEAD
 
 matrix:
